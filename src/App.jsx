@@ -7,6 +7,10 @@ function App() {
   const [count, setCount] = useState(0);
   const [randomPassword, setRandomPassword] = useState("");
   const [passwordLength, setPasswordLength] = useState(10);
+  const [lowerCaseToggle, setLowerCaseToggle] = useState(true)
+  const [upperCaseToggle, setUpperCaseToggle] = useState(true)
+  const [numbersToggle, setNumbersToggle] = useState(true)
+  const [specialCharactersToggle, setSpecialCharactersToggle] = useState(true)
 
   const selectedPasswordLength = 10;
 
@@ -25,7 +29,7 @@ function App() {
   const generateRandomPassword = () => {
     const passwordArray = [];
     for (let i = 0; i < passwordLength; i++) {
-      let randomNumber = Math.floor(Math.random() * 88);
+      let randomNumber = Math.floor(Math.random() * potentialPasswordCharacters.length);
       passwordArray.push(potentialPasswordCharacters[randomNumber]);
     }
     console.log("passwordArray: ", passwordArray.join(""));
