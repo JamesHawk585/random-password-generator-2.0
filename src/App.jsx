@@ -19,14 +19,30 @@ function App() {
   const numbers = "0123456789".split("");
   const specialCharacters = "!@#$%^&*()_+-=[]{}|;:,.<>?".split("");
 
-  const potentialPasswordCharacters = [
-    ...lowerCase,
-    ...upperCase,
-    ...numbers,
-    ...specialCharacters,
-  ];
+  // const potentialPasswordCharacters = [
+  //   ...lowerCase,
+  //   ...upperCase,
+  //   ...numbers,
+  //   ...specialCharacters,
+  // ];
 
-  const generateRandomPassword = () => {
+  const generatePotentialPasswordCharacters = () => {
+    const potentialPasswordCharacters = []
+    if (lowerCaseToggle === true) {
+      potentialPasswordCharacters(...lowerCase)
+    } else if (upperCaseToggle === true) {
+      potentialPasswordCharacters(...upperCase)
+    } else if (numbersToggle === true) {
+      potentialPasswordCharacters(...numbers)
+    } else if (specialCharactersToggle === true) {
+      potentialPasswordCharacters(...numbers)
+    }
+    console.log(potentialPasswordCharacters)
+    return potentialPasswordCharacters
+  }
+
+  const generateRandomPassword = (generatePotentialPasswordCharacters) => {
+    generatePotentialPasswordCharacters()
     const passwordArray = [];
     for (let i = 0; i < passwordLength; i++) {
       let randomNumber = Math.floor(Math.random() * potentialPasswordCharacters.length);
